@@ -1,45 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Electronic">
-    <Position X="0.5" Y="1.75" Width="1.5" />
+    <Position X="0.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAABAAEAAAAAAAIAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAABAAEAAAAAAAIAAAAAAAAABAAAAAAAAAAAAACA=</HashCode>
       <FileName>Electronic.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Grocery">
-    <Position X="2.75" Y="1.75" Width="1.5" />
+    <Position X="3.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEAAAAAAAEAAAAAAAIAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AEAAAAAAAEAAAAAAAIAAAAAAAAABAAAAAAAAAAAAACA=</HashCode>
       <FileName>Grocery.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Manager">
-    <Position X="7.25" Y="0.5" Width="1.5" />
+    <Position X="9.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>qAAAIAAAAAAACAAAAAAAABAAAUEBBAAAACAIACAAKAA=</HashCode>
       <FileName>Manager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Product" Collapsed="true">
-    <Position X="1.75" Y="0.5" Width="1.5" />
+    <Position X="2" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAADAAIAAEAAAAAAAIABARAAAAAFACCAAAAkAAAAAAA=</HashCode>
+      <HashCode>AAADACIAAEAAAAAAAIAFATAAAAAFACCAAAAkAAAAAAA=</HashCode>
       <FileName>Product.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Storage">
-    <Position X="9.5" Y="0.5" Width="1.5" />
+    <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>KAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAgCAA=</HashCode>
       <FileName>Storage.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Supermarket">
-    <Position X="5" Y="0.5" Width="1.5" />
+    <Position X="5.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgIAAAAAAAAAAAAQAAAAAAAEBBAAAAACAIBAAAAIA=</HashCode>
       <FileName>Supermarket.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Invoice" Collapsed="true">
+    <Position X="2" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAIAAEAAAAAAAAAABAAAASA=</HashCode>
+      <FileName>Invoice.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Customer" Collapsed="true">
+    <Position X="6.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAEAAAAAggAAAAAAAAAQIEAAAAAAAEAgAAAAA=</HashCode>
+      <FileName>Customer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Special" Collapsed="true">
+    <Position X="8" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAEAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Special.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Normal" Collapsed="true">
+    <Position X="5.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAQAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Normal.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
