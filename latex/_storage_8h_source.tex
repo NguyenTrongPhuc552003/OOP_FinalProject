@@ -1,0 +1,30 @@
+\doxysection{Storage.\+h}
+\hypertarget{_storage_8h_source}{}\label{_storage_8h_source}\mbox{\hyperlink{_storage_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Trong\_Phuc\ on\ 21/04/2024.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ TEST\_STORAGE\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ TEST\_STORAGE\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_product_8h}{Product.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{_storage_8h_a4baee292d0540da988c38f231372d8b2}{fileName}}\ =\ \textcolor{stringliteral}{"{}products.csv"{}};\ \textcolor{comment}{//\ File\ name\ to\ save/load\ products}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_storage}{Storage}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ Function\ to\ process\ content\ of\ a\ line}}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_storage_afd664669886f79a5de3282027d1b9cc8}{contentProcessor}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ line,\ \textcolor{keywordtype}{size\_t}\ commaPos1,\ \textcolor{keywordtype}{size\_t}\ commaPos2);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ Function\ prototypes}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_storage_ab55233f3f6399544a41ba75559d4ea14}{saveProductsToFile}}(\textcolor{keyword}{const}\ vector<Product*>\&);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_storage_aebf0f41bcff6b0348453689ad9bbbd05}{loadProductsFromFile}}(vector<Product*>\&);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_storage_a0794124e913d835ca04d480f09164520}{updateProductsFromFile}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ productName,\ \textcolor{keywordtype}{double}\ newPrice,\ \textcolor{keywordtype}{int}\ newQuantity);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_storage_aced3bfd4f9105220a5705385324173b6}{clearProductsFile}}();}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//TEST\_STORAGE\_H}}
+
+\end{DoxyCode}

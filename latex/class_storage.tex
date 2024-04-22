@@ -1,0 +1,61 @@
+\doxysection{Storage Class Reference}
+\hypertarget{class_storage}{}\label{class_storage}\index{Storage@{Storage}}
+
+
+{\ttfamily \#include $<$Storage.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_storage_ab55233f3f6399544a41ba75559d4ea14}{save\+Products\+To\+File}} (const vector$<$ \mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*} $>$ \&)
+\item 
+static bool \mbox{\hyperlink{class_storage_aebf0f41bcff6b0348453689ad9bbbd05}{load\+Products\+From\+File}} (vector$<$ \mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*} $>$ \&)
+\item 
+static bool \mbox{\hyperlink{class_storage_a0794124e913d835ca04d480f09164520}{update\+Products\+From\+File}} (const string \&product\+Name, double new\+Price, int new\+Quantity)
+\item 
+static bool \mbox{\hyperlink{class_storage_aced3bfd4f9105220a5705385324173b6}{clear\+Products\+File}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_storage_afd664669886f79a5de3282027d1b9cc8}{content\+Processor}} (const string \&line, size\+\_\+t comma\+Pos1, size\+\_\+t comma\+Pos2)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_storage_aced3bfd4f9105220a5705385324173b6}\label{class_storage_aced3bfd4f9105220a5705385324173b6} 
+\index{Storage@{Storage}!clearProductsFile@{clearProductsFile}}
+\index{clearProductsFile@{clearProductsFile}!Storage@{Storage}}
+\doxysubsubsection{\texorpdfstring{clearProductsFile()}{clearProductsFile()}}
+{\footnotesize\ttfamily bool Storage\+::clear\+Products\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_storage_afd664669886f79a5de3282027d1b9cc8}\label{class_storage_afd664669886f79a5de3282027d1b9cc8} 
+\index{Storage@{Storage}!contentProcessor@{contentProcessor}}
+\index{contentProcessor@{contentProcessor}!Storage@{Storage}}
+\doxysubsubsection{\texorpdfstring{contentProcessor()}{contentProcessor()}}
+{\footnotesize\ttfamily string Storage\+::content\+Processor (\begin{DoxyParamCaption}\item[{const string \&}]{line,  }\item[{size\+\_\+t}]{comma\+Pos1,  }\item[{size\+\_\+t}]{comma\+Pos2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_storage_aebf0f41bcff6b0348453689ad9bbbd05}\label{class_storage_aebf0f41bcff6b0348453689ad9bbbd05} 
+\index{Storage@{Storage}!loadProductsFromFile@{loadProductsFromFile}}
+\index{loadProductsFromFile@{loadProductsFromFile}!Storage@{Storage}}
+\doxysubsubsection{\texorpdfstring{loadProductsFromFile()}{loadProductsFromFile()}}
+{\footnotesize\ttfamily bool Storage\+::load\+Products\+From\+File (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*} $>$ \&}]{products }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_storage_ab55233f3f6399544a41ba75559d4ea14}\label{class_storage_ab55233f3f6399544a41ba75559d4ea14} 
+\index{Storage@{Storage}!saveProductsToFile@{saveProductsToFile}}
+\index{saveProductsToFile@{saveProductsToFile}!Storage@{Storage}}
+\doxysubsubsection{\texorpdfstring{saveProductsToFile()}{saveProductsToFile()}}
+{\footnotesize\ttfamily bool Storage\+::save\+Products\+To\+File (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_product}{Product}} \texorpdfstring{$\ast$}{*} $>$ \&}]{products }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_storage_a0794124e913d835ca04d480f09164520}\label{class_storage_a0794124e913d835ca04d480f09164520} 
+\index{Storage@{Storage}!updateProductsFromFile@{updateProductsFromFile}}
+\index{updateProductsFromFile@{updateProductsFromFile}!Storage@{Storage}}
+\doxysubsubsection{\texorpdfstring{updateProductsFromFile()}{updateProductsFromFile()}}
+{\footnotesize\ttfamily bool Storage\+::update\+Products\+From\+File (\begin{DoxyParamCaption}\item[{const string \&}]{product\+Name,  }\item[{double}]{new\+Price,  }\item[{int}]{new\+Quantity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_storage_8h}{Storage.\+h}}\item 
+\mbox{\hyperlink{_storage_8cpp}{Storage.\+cpp}}\end{DoxyCompactItemize}

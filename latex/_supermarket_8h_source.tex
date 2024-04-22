@@ -1,0 +1,37 @@
+\doxysection{Supermarket.\+h}
+\hypertarget{_supermarket_8h_source}{}\label{_supermarket_8h_source}\mbox{\hyperlink{_supermarket_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Trong\_Phuc\ on\ 21/04/2024.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ TEST\_SUPERMARKET\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ TEST\_SUPERMARKET\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_product_8h}{Product.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_supermarket}{Supermarket}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00012\ \ \ \ \ vector<Product*>\ products;\ \textcolor{comment}{//\ List\ of\ products\ in\ the\ supermarket}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{comment}{//\ Constructor\ and\ Destructor}}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{class_supermarket_acacc87e237fdc4f62bf5dcb416869b79}{Supermarket}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_supermarket_acacc87e237fdc4f62bf5dcb416869b79}{Supermarket}}(\textcolor{keyword}{const}\ vector<Product*>\&\ products);}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_supermarket_a6140b300fddafd73ab29cf823baf5951}{\string~Supermarket}}();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ Supporting\ methods}}
+\DoxyCodeLine{00021\ \ \ \ \ vector<Product*>\ \mbox{\hyperlink{class_supermarket_a39bff2fe4cceb5ee1c27c41900ff5acf}{getProducts}}();}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_product}{Product}}*\ \mbox{\hyperlink{class_supermarket_a455e3dbe9af6b0d60c2cb984a56fc301}{binarySearch}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ productName);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Main\ methods}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_supermarket_ac9cad1838f43b034239ff10e1388b613}{addProduct}}(\mbox{\hyperlink{class_product}{Product}}*\ product);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_supermarket_af953a10cf0910bc17f6ba284a04517d8}{removeProduct}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ productName);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_supermarket_ab05ca1479aa598450e268c94989f9fda}{displayProductDetails}}();}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_supermarket_a0bd6f57df3caf7fc68a3a6bf110f1a70}{calculateTotalRevenue}}();}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_supermarket_a8bc354936aa720636966e9b3eb1d9c25}{sortProductsByName}}();}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//TEST\_SUPERMARKET\_H}}
+
+\end{DoxyCode}
