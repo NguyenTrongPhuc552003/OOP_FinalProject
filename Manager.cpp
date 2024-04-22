@@ -156,6 +156,7 @@ void Manager::calculateTotalRevenue() {
 void Manager::loadProductsFromFile() {
     vector<Product*> loadedProducts;
     if (Storage::loadProductsFromFile(loadedProducts)) {
+        cout << "Products loaded from file: " << fileName << endl;
         for (Product* product : loadedProducts) {
             supermarket.addProduct(product);
         }
@@ -164,10 +165,6 @@ void Manager::loadProductsFromFile() {
 
 // Save products to CSV file
 void Manager::saveProductsToFile() {
-    if (supermarket.getProducts().empty()) {
-        cout << "No products to save!\n";
-        return;
-    }
     if (Storage::saveProductsToFile(supermarket.getProducts())) {
         cout << "Products saved successfully!\n";
     } else {
@@ -177,35 +174,11 @@ void Manager::saveProductsToFile() {
 
 // Update products from CSV file
 void Manager::updateProductFromFile() {
-    vector<Product*> loadedProducts;
-    if (Storage::loadProductsFromFile(loadedProducts)) { // Check if file is empty
-        cout << "Enter product name to update: ";
-        string name;
-        cin >> name;
-
-        // Search for product by name
-        Supermarket supSearcher(loadedProducts); // Create a temporary supermarket to search for products
-        Product* product = supSearcher.binarySearch(name);
-        if (product) { // If product is found
-            // Update product details
-            cout << "Enter new price for " << product->getName() << ": ";
-            double price;
-            cin >> price;
-            product->setPrice(price);
-
-            cout << "Enter new quantity for " << product->getName() << ": ";
-            int quantity;
-            cin >> quantity;
-            product->setQuantity(quantity);
-
-            if (Storage::updateProductsFromFile(name, price, quantity)) {
-                cout << "Products updated successfully!\n";
-            } else {
-                cout << "Failed to update products.\n";
-            }
-        } else {
-            cout << "Product not found!\n";
-        }
+    vector<Product*> product;
+    if (Storage::updateProductsFromFile(product)) {
+        cout << "Product updated successfully!\n";
+    } else {
+        cout << "Failed to update product.\n";
     }
 }
 

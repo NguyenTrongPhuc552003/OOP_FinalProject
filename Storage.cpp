@@ -5,6 +5,7 @@
 #include "Storage.h"
 #include "Electronic.h"
 #include "Grocery.h"
+#include "Supermarket.h"
 
 // Function to process content of a line
 string Storage::contentProcessor(const string& line, size_t commaPos1, size_t commaPos2) {
@@ -33,11 +34,13 @@ bool Storage::saveProductsToFile(const vector<Product*>& products) {
         cout << "Error: Unable to open file for writing: " << fileName << endl;
         return false;
     }
-
+    if (products.empty()) {
+		cout << "No products to save!\n";
+		return false;
+	}
     for (const auto& product : products) {
         outFile << product->type() << ',' << product->getName() << ',' << product->getPrice() << "," << product->getQuantity() << endl;
     }
-
     outFile.close();
     cout << "Products saved to CSV file: " << fileName << endl;
     return true;
@@ -46,17 +49,17 @@ bool Storage::saveProductsToFile(const vector<Product*>& products) {
 // Function to load products from file
 bool Storage::loadProductsFromFile(vector<Product*>& products) {
     ifstream inFile(fileName);
+    bool checkEmpty = true;
+
     if (!inFile.is_open()) {
         cerr << "Error: Unable to open file for reading: " << fileName << endl;
         return false;
     }
 
+    products.clear(); // Clear products vector before loading new products
     string line;
     while (getline(inFile, line)) {
-        if (line.empty()) {
-            cout << "File is empty!\n";
-            return false;
-        }
+        if (checkEmpty) checkEmpty = false; // Check if file is empty
         istringstream iss(line);
         string name = contentProcessor(line, 1, 2);
         double price = stod(contentProcessor(line, 2, 3));
@@ -66,79 +69,61 @@ bool Storage::loadProductsFromFile(vector<Product*>& products) {
     }
 
     inFile.close();
-    cout << "Products loaded from file: " << fileName << endl;
+    if (checkEmpty) {
+		cout << "File is empty!\n";
+		return false;
+    }
     return true;
 }
 
 // Function to update products data
-bool Storage::updateProductsFromFile(const string& productName, double newPrice, int newQuantity) {
-    // Read the entire CSV file into memory
-    vector<string> lines;
-    ifstream inFile(fileName);
-    if (!inFile.is_open()) {
-        cerr << "Error: Unable to open file for reading: " << fileName << endl;
-        return false;
-    }
-
-    string l;
-    while (getline(inFile, l)) {
-        lines.push_back(l);
-    }
-    inFile.close();
-
-    // Modify the data in memory
-    bool found = false;
-    for (auto& line : lines) {
-        istringstream iss(line);
+bool Storage::updateProductsFromFile(vector<Product*>& loadedProducts) {
+    if (Storage::loadProductsFromFile(loadedProducts)) { // Check if file is empty
+        cout << "Enter product name to update: ";
         string name;
-        double price;
-        int quantity;
-        char comma;
-        if (getline(iss, name, ',') &&
-            iss >> price >> comma >> quantity) {
-            if (name == productName) {
-                found = true;
-                // Update price and quantity
-                price = newPrice;
-                quantity = newQuantity;
-                // Rebuild the line with updated values
-                ostringstream oss;
-                oss << name << "," << price << "," << quantity;
-                line = oss.str();
-                break; // No need to continue searching
-            }
+        cin >> name;
+
+        // Search for product by name
+        Supermarket supSearcher(loadedProducts); // Create a temporary supermarket to search for products
+        Product* product = supSearcher.binarySearch(name); // Search for product by name
+        if (product) { // If product is found
+            // Update product details
+            cout << "Enter new price for " << product->getName() << ": ";
+            double price;
+            cin >> price;
+
+            cout << "Enter new quantity for " << product->getName() << ": ";
+            int quantity;
+            cin >> quantity;
+
+            for (const auto& product : loadedProducts) { // Update product details
+                if (product->getName() == name) {
+					product->setPrice(price);
+					product->setQuantity(quantity);
+                    break;
+				}
+			}
+
+            // Clear file and save updated products
+            return (Storage::clearProductsFile() && Storage::saveProductsToFile(loadedProducts));
+        } else {
+            cout << "Product not found!\n";
+            return false;
         }
     }
-
-    if (!found) {
-        cerr << "Error: Product not found in CSV file: " << productName << endl;
+    else {
         return false;
     }
-
-    // Write the modified data back to the CSV file
-    ofstream outFile(fileName);
-    if (!outFile.is_open()) {
-        cerr << "Error: Unable to open file for writing: " << fileName << endl;
-        return false;
-    }
-
-    for (const auto& line : lines) {
-        outFile << line << endl;
-    }
-    outFile.close();
-
-    cout << "Product updated in CSV file: " << fileName << endl;
     return true;
 }
 
 // Function to clear products file
 bool Storage::clearProductsFile() {
-    ofstream outFile(fileName, ios::trunc);
+    ofstream outFile(fileName, ios::out);
     if (!outFile.is_open()) {
         cout << "Error: Unable to open file for writing: " << fileName << endl;
         return false;
     }
     outFile.close();
-    cout << "Products file cleared: " << fileName << endl;
     return true;
 }

@@ -6,16 +6,21 @@
 #define TEST_GROCERY_H
 
 #include "Product.h"
+#include "Invoice.h"
 
-class Grocery : public Product {
+class Grocery : public Product, public Invoice {
 public:
     // Constructor for Grocery class that takes a name, price, and quantity
-    Grocery(const string& name, double price, int quantity);
+    Grocery(const string&, double, int);
+
+    // Constructor for Grocery class that takes an invoice number
+    Grocery(int);
 
     // Function prototypes
     void displayDetails() override;
     double calculateTotalPrice() override;
     bool type() override;
+    double calculateTotalAmount() const override;
 };
 
 #endif //TEST_GROCERY_H

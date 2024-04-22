@@ -6,16 +6,21 @@
 #define TEST_ELECTRONIC_H
 
 #include "Product.h"
+#include "Invoice.h"
 
-class Electronic : public Product {
+class Electronic : public Product, public Invoice {
 public:
     // Constructor for Electronic class that takes a name, price, and quantity
-    Electronic(const string& name, double price, int quantity);
+    Electronic(const string&, double, int);
+
+    // Constructor for Electronic class that takes an invoice number
+    Electronic(int);
 
     // Function prototypes
     void displayDetails() override;
     double calculateTotalPrice() override;
     bool type() override;
+    double calculateTotalAmount() const override;
 };
 
 #endif //TEST_ELECTRONIC_H

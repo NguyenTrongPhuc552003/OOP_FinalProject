@@ -14,16 +14,16 @@ private:
 public:
     // Constructor and Destructor
     Supermarket() = default;
-    Supermarket(const vector<Product*>& products);
+    Supermarket(const vector<Product*>&);
     ~Supermarket();
 
     // Supporting methods
     vector<Product*> getProducts();
-    Product* binarySearch(const string& productName);
+    Product* binarySearch(const string&);
 
     // Main methods
-    void addProduct(Product* product);
-    void removeProduct(const string& productName);
+    void addProduct(Product*);
+    void removeProduct(const string&);
     void displayProductDetails();
     double calculateTotalRevenue();
     void sortProductsByName();

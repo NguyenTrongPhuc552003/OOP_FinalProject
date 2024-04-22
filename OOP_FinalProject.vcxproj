@@ -127,19 +127,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Customer.cpp" />
     <ClCompile Include="Electronic.cpp" />
     <ClCompile Include="Grocery.cpp" />
+    <ClCompile Include="Invoice.cpp" />
     <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="Normal.cpp" />
     <ClCompile Include="OOP_FinalProject.cpp" />
     <ClCompile Include="Product.cpp" />
+    <ClCompile Include="Special.cpp" />
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="Supermarket.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Customer.h" />
     <ClInclude Include="Electronic.h" />
     <ClInclude Include="Grocery.h" />
+    <ClInclude Include="Invoice.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="Normal.h" />
     <ClInclude Include="Product.h" />
+    <ClInclude Include="Special.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="Supermarket.h" />
   </ItemGroup>
