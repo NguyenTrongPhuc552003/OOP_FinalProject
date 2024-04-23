@@ -43,7 +43,7 @@ public:
     void loadProductsFromFile();
     void saveProductsToFile();
     static void updateProductFromFile();
-    static void clearProductsFile();
+    void clearProductsFile();
 };
 
 #endif //TEST_MANAGER_H

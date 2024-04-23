@@ -28,17 +28,55 @@ string Storage::contentProcessor(const string& line, size_t commaPos1, size_t co
 }
 
 // Function to save products to file
-bool Storage::saveProductsToFile(const vector<Product*>& products) {
-    ofstream outFile(fileName, ios::app | ios::out);
-    if (!outFile.is_open()) {
-        cout << "Error: Unable to open file for writing: " << fileName << endl;
-        return false;
-    }
+bool Storage::saveProductsToFile(vector<Product*> products) {
+    // Check if file is exist or not
+    // 0: Tao moi
+    // 1:
+    // - Content is empty: ios::out
+    // - Content is exist:
+    //   + Call to LoadFile function
+    //   + Checking to the same product's name: change price, quantity or append (using for loop)
     if (products.empty()) {
 		cout << "No products to save!\n";
 		return false;
 	}
-    for (const auto& product : products) {
+
+    vector<Product*> loadedProducts;
+    bool existProducts = loadProductsFromFile(loadedProducts);
+    bool isExist = false;
+
+    if (existProducts && !loadedProducts.empty()) { // Check if file is empty
+        for (const auto& pro : loadedProducts) { // Check if product is already exist
+            for (const auto& input : products) {
+                if (input->getName() == pro->getName()) {
+                    cout << "Product " << input->getName() << " is already exist in file!\n";
+                    cout << "Do you want to update it? (Y/N): ";
+                    char choice;
+                    cin >> choice;
+                    if (choice == 'Y' || choice == 'y') {
+                        pro->setPrice(input->getPrice());
+                        pro->setQuantity(input->getQuantity());
+                    }
+                    // Remove all products that are already exist in file
+                    products.erase(remove(products.begin(), products.end(), input), products.end());
+                    break;
+                }
+            }
+        }
+        isExist = true;
+        loadedProducts.insert(loadedProducts.end(), products.begin(), products.end()); // Append new products to loaded products
+    }
+    else {
+        cout << "No products are loaded from file!\n";
+        return false;
+    }
+    ofstream outFile(fileName, ios::out); // Open file for writing
+    if (!outFile.is_open()) {
+        cout << "Error: Unable to open file for writing: " << fileName << endl;
+        return false;
+    }
+    vector<Product*> tempProducts = (isExist ? loadedProducts : products);
+    for (const auto& product : tempProducts) {
         outFile << product->type() << ',' << product->getName() << ',' << product->getPrice() << "," << product->getQuantity() << endl;
     }
     outFile.close();
@@ -49,17 +87,14 @@ bool Storage::saveProductsToFile(const vector<Product*>& products) {
 // Function to load products from file
 bool Storage::loadProductsFromFile(vector<Product*>& products) {
     ifstream inFile(fileName);
-    bool checkEmpty = true;
 
     if (!inFile.is_open()) {
         cerr << "Error: Unable to open file for reading: " << fileName << endl;
         return false;
     }
 
-    products.clear(); // Clear products vector before loading new products
     string line;
     while (getline(inFile, line)) {
-        if (checkEmpty) checkEmpty = false; // Check if file is empty
         istringstream iss(line);
         string name = contentProcessor(line, 1, 2);
         double price = stod(contentProcessor(line, 2, 3));
@@ -69,7 +104,7 @@ bool Storage::loadProductsFromFile(vector<Product*>& products) {
     }
 
     inFile.close();
-    if (checkEmpty) {
+    if (products.empty()) { // No data is stored
 		cout << "File is empty!\n";
 		return false;
     }
@@ -105,7 +140,7 @@ bool Storage::updateProductsFromFile(vector<Product*>& loadedProducts) {
 			}
 
             // Clear file and save updated products
-            return (Storage::clearProductsFile() && Storage::saveProductsToFile(loadedProducts));
+            return Storage::saveProductsToFile(loadedProducts);
         } else {
             cout << "Product not found!\n";
             return false;

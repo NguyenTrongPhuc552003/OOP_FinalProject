@@ -24,6 +24,7 @@ public:
     // Main methods
     void addProduct(Product*);
     void removeProduct(const string&);
+    void clearProducts();
     void displayProductDetails();
     double calculateTotalRevenue();
     void sortProductsByName();

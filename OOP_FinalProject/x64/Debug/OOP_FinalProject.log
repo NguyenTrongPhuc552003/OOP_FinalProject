@@ -1,13 +1,2 @@
-﻿  Customer.cpp
-  Electronic.cpp
-  Grocery.cpp
-  Invoice.cpp
-  Manager.cpp
-  Normal.cpp
-  OOP_FinalProject.cpp
-  Product.cpp
-  Special.cpp
-  Storage.cpp
-  Supermarket.cpp
-  Generating Code...
+﻿  Manager.cpp
   OOP_FinalProject.vcxproj -> C:\Users\Trong_Phuc\OneDrive_VNU-HCMUS\Documents\HCMUS Subjects\K21\ThucHanh\OOP\OOP_FinalProject\x64\Debug\OOP_FinalProject.exe

@@ -56,6 +56,11 @@ void Supermarket::removeProduct(const string& productName) {
     }
 }
 
+// Clear all products from supermarket
+void Supermarket::clearProducts() {
+    products.clear();
+}
+
 // Display details of all products
 void Supermarket::displayProductDetails() {
     cout << "Available Products:\n";
