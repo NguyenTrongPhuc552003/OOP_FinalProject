@@ -24,6 +24,7 @@ public:
     // Virtual Methods
     virtual double calculateTotalAmount() const;
     virtual void displayInvoiceDetails() const;
+    virtual string getCurrentDate() const;
 };
 
 #endif //TEST_INVOICE_H
