@@ -52,6 +52,9 @@ void Manager::loop() {
             case 10:
                 clearProductsFile();
                 break;
+            case 11:
+                showInvoice();
+                break;
             default:
                 cout << "Invalid choice!\n";
         }
@@ -109,26 +112,16 @@ void Manager::addProduct() {
 // Remove a product from the supermarket
 void Manager::removeProduct() {
     supermarket.displayProductDetails();
-    cout << "Are you wan to remove all of products (Y/N): ";
-    char choice;
-    cin >> choice;
-    if (choice == 'Y' || choice == 'y') {
-        supermarket.clearProducts();
-		cout << "All products removed successfully!\n";
+    string name;
+    cout << "Enter product name to remove: ";
+    cin >> name;
+    Product* product = supermarket.binarySearch(name);
+    if (product) {
+        supermarket.removeProduct(name);
+        cout << "Product removed successfully!\n";
+    } else {
+        cout << "Product not found!\n";
     }
-    else {
-        string name;
-        cout << "Enter product name to remove: ";
-        cin >> name;
-        Product* product = supermarket.binarySearch(name);
-        if (product) {
-            supermarket.removeProduct(name);
-            cout << "Product removed successfully!\n";
-        }
-        else {
-            cout << "Product not found!\n";
-        }
-	}
 }
 
 // Sort products by name
@@ -164,7 +157,6 @@ void Manager::calculateTotalRevenue() {
 
 // Load products from CSV file
 void Manager::loadProductsFromFile() {
-    supermarket.clearProducts();
     vector<Product*> loadedProducts;
     if (Storage::loadProductsFromFile(loadedProducts)) {
         cout << "Products loaded from file: " << fileName << endl;
@@ -190,6 +182,20 @@ void Manager::updateProductFromFile() {
         cout << "Product updated successfully!\n";
     } else {
         cout << "Failed to update product.\n";
+    }
+}
+
+void Manager::showInvoice() {
+    Invoice invoice;
+    string choice;
+    cout << "1. Xuat hoa don hien tai. " << endl;
+    cout << "2. Xuat hoa don trong file. " << endl;
+    cin >> choice;
+    if (choice == "1") {
+        invoice.displayInvoiceDetails(supermarket.getProducts());
+    }
+    else {
+        invoice.readInvoiceFile();
     }
 }
 
