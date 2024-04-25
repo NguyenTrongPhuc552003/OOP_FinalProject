@@ -28,7 +28,7 @@ string Storage::contentProcessor(const string& line, size_t commaPos1, size_t co
 }
 
 // Function to save products to file
-bool Storage::saveProductsToFile(vector<Product*> products) {
+bool Storage::saveProductsToFile(vector<Product*> products, bool updateMode) {
     // Check if file is exist or not
     // 0: Tao moi
     // 1:
@@ -40,11 +40,12 @@ bool Storage::saveProductsToFile(vector<Product*> products) {
 		cout << "No products to save!\n";
 		return false;
 	}
-
     vector<Product*> loadedProducts;
     bool existProducts = loadProductsFromFile(loadedProducts);
     bool isExist = false;
-
+    if (updateMode) {
+        goto updateModeAnnotation; // Jump to update mode
+    }
     if (existProducts && !loadedProducts.empty()) { // Check if file is empty
         for (const auto& pro : loadedProducts) { // Check if product is already exist
             for (const auto& input : products) {
@@ -66,6 +67,7 @@ bool Storage::saveProductsToFile(vector<Product*> products) {
         isExist = true;
         loadedProducts.insert(loadedProducts.end(), products.begin(), products.end()); // Append new products to loaded products
     }
+updateModeAnnotation:
     ofstream outFile(fileName, ios::out); // Open file for writing
     if (!outFile.is_open()) {
         cout << "Error: Unable to open file for writing: " << fileName << endl;
@@ -136,7 +138,7 @@ bool Storage::updateProductsFromFile(vector<Product*>& loadedProducts) {
 			}
 
             // Clear file and save updated products
-            return Storage::saveProductsToFile(loadedProducts);
+            return Storage::saveProductsToFile(loadedProducts, true);
         } else {
             cout << "Product not found!\n";
             return false;

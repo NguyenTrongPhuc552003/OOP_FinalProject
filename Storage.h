@@ -16,7 +16,7 @@ protected:
 
 public:
     // Function prototypes
-    static bool saveProductsToFile(vector<Product*>);
+    static bool saveProductsToFile(vector<Product*>, bool);
     static bool loadProductsFromFile(vector<Product*>&);
     static bool updateProductsFromFile(vector<Product*>&);
     static bool clearProductsFile();

@@ -182,7 +182,7 @@ void Manager::loadProductsFromFile() {
 
 // Save products to CSV file
 void Manager::saveProductsToFile() {
-    if (Storage::saveProductsToFile(supermarket.getProducts())) {
+    if (Storage::saveProductsToFile(supermarket.getProducts(), false)) {
         cout << "Products saved successfully!\n";
     } else {
         cout << "Failed to save products to CSV.\n";
