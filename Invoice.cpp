@@ -23,7 +23,7 @@ string Invoice::getCurrentDate() {
     struct tm localTime;
 
     if (localtime_s(&localTime, &currentTime) == 0) {
-        // Lấy thông tin về thời gian hiện tại
+        // Get the current date and time
         int year = localTime.tm_year + 1900;
         int month = localTime.tm_mon + 1;
         int day = localTime.tm_mday;
@@ -34,40 +34,55 @@ string Invoice::getCurrentDate() {
         date = to_string(year) + "-" + to_string(month) + "-" + to_string(day) + " " + to_string(hour) + ":" + to_string(minute) + ":" + to_string(second);
     }
     else {
-        cout << "Không thể lấy thông tin về thời gian hiện tại." << endl;
+        cout << "Cannot get the current information of time" << endl;
     }
     return date;
 }
 
 string Invoice::returnSyntaxPrice(string price) {
-
     size_t dotPosition = price.find(".");
-
-    string output = price.substr(0, dotPosition);
-
-    output += "VND";
-
+    string output = price.substr(0, dotPosition) + "VND";
     return output;
 }
 
 void Invoice::displayInvoiceDetails(vector<Product*> data) {
     string billDetails;
+    string readLine;
+    unsigned int currentInvoiceNumber = 0;
 
-    billDetails += "Invoice Number: " + to_string(invoiceNumber) + "\n";
+    if (data.empty()) {
+		cout << "No products to display." << endl;
+		return;
+	}
+
+    ifstream inputFile("Bill.csv");
+    if (!inputFile.is_open()) {
+		cout << "Error open file!";
+	}
+
+    while (inputFile.good() && getline(inputFile, readLine)) {
+        if (readLine.find("Invoice Number: ") != string::npos) { // Check if the line contains the invoice number
+			currentInvoiceNumber = stoi(readLine.substr(readLine.find("Invoice Number: ") + 16));
+		}
+	}
+    inputFile.close();
+
+    if (currentInvoiceNumber == 0) {
+        billDetails += "Invoice Number: " + to_string(invoiceNumber) + "\n";
+    }
+    else {
+        billDetails += "Invoice Number: " + to_string(currentInvoiceNumber + 1) + "\n";
+    }
     billDetails += "Products:\n";
 
-    for (const auto& product : data) {
-        
-        billDetails += product->getName() + "," + to_string(product->getQuantity()) + "," + returnSyntaxPrice(to_string(product->getPrice())) + "," + getCurrentDate() + "\n";
+    for (const auto& product : data) {   
+        billDetails += product->getName() + "," + to_string(product->getQuantity()) + "," + returnSyntaxPrice(to_string(product->getPrice())) + "," + getCurrentDate() + ",\n";
     }
-
     billDetails += "Total Amount: " + returnSyntaxPrice(to_string(calculateTotalAmount(data))) + "\n";
-
     cout << billDetails << endl;
-
     ofstream outputFile("Bill.csv", ios::app);
     if (outputFile.is_open()) {
-        outputFile << billDetails;
+        outputFile << billDetails << endl;
         outputFile.close();
     }
     else {
@@ -76,28 +91,32 @@ void Invoice::displayInvoiceDetails(vector<Product*> data) {
 }
 
 void Invoice::readInvoiceFile() {
-    string nameProduct;
-    string quantityProduct;
-    string priceProduct;
-    string currentDate;
+    string categories[4] = { "Name", "Quantity", "Price", "Date" };
+    string readLine, stored;
+    unsigned int i = 0;
     ifstream inputFile("Bill.csv");
 
     if (!inputFile.is_open()) {
         cout << "Error open file!";
     }
-
     while (inputFile.good()) {
-        getline(inputFile, nameProduct, ',');
-        getline(inputFile, quantityProduct, ',');
-        getline(inputFile, priceProduct, ',');
-        getline(inputFile, currentDate, ',');
-
-        cout << "Product Name: " << nameProduct << endl;
-        cout << "Quantiry: " << quantityProduct << endl;
-        cout << "Price: " << priceProduct << endl;
-        cout << "Date: " << currentDate << endl;
+        getline(inputFile, readLine);
+        if (readLine.find(',') != string::npos) {
+            for (unsigned j = 0; j < readLine.length(); j++) {
+                if (readLine[j] == ',') {
+                    cout << categories[i++] << ": " << stored;
+                    cout << (i == 4 ? "\n" : ", ");
+                    stored = "";
+                }
+                else {
+                    stored += readLine[j];
+                }
+            }
+            i = 0;
+        }
+        else {
+            cout << readLine << endl;
+        }
     }
-
+    inputFile.close();
 }
-
-

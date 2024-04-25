@@ -36,6 +36,7 @@ public:
     virtual double getDiscount() const; // Pure virtual function for getting discount
     virtual double getTax() const; // Pure virtual function for getting tax
     virtual double getWarrantyCost() const; // Pure virtual function for getting warranty cost
+    virtual double calculateTotalAmount(vector<Product*>) const; // Pure virtual function for calculating total amount
 
     // Getter and setter methods
     void setPrice(double);

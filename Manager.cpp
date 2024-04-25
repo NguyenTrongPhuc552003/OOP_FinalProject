@@ -112,6 +112,14 @@ void Manager::addProduct() {
 // Remove a product from the supermarket
 void Manager::removeProduct() {
     supermarket.displayProductDetails();
+    cout << "Are you want to remove all current products? (Y/N): ";
+    char choice;
+    cin >> choice;
+    if (choice == 'Y' || choice == 'y') {
+		supermarket.clearProducts();
+		cout << "All products removed successfully!\n";
+		return;
+	}
     string name;
     cout << "Enter product name to remove: ";
     cin >> name;
@@ -188,8 +196,9 @@ void Manager::updateProductFromFile() {
 void Manager::showInvoice() {
     Invoice invoice;
     string choice;
-    cout << "1. Xuat hoa don hien tai. " << endl;
-    cout << "2. Xuat hoa don trong file. " << endl;
+    cout << "1. Import the current bill" << endl;
+    cout << "2. Import the bill of file" << endl;
+    cout << "Enter your choice: ";
     cin >> choice;
     if (choice == "1") {
         invoice.displayInvoiceDetails(supermarket.getProducts());

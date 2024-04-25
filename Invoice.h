@@ -22,8 +22,8 @@ public:
     void addProduct(Product*);
 
     // Virtual Methods
-    virtual double calculateTotalAmount(vector<Product*> data);
-    void displayInvoiceDetails(vector<Product*> data);
+    virtual double calculateTotalAmount(vector<Product*>);
+    void displayInvoiceDetails(vector<Product*>);
     string getCurrentDate();
     void readInvoiceFile();
     string returnSyntaxPrice(string price);

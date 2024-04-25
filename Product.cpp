@@ -22,6 +22,10 @@ double Product::getWarrantyCost() const {
 	return 0.0;
 }
 
+double Product::calculateTotalAmount(vector<Product*>) const {
+    return 0.0;
+}
+
 // Update the price of the product
 void Product::setPrice(double newPrice) {
     price = newPrice;

@@ -1,0 +1,28 @@
+Invoice Number: 0
+Products:
+Test,2,10000VND,2024-4-25 13:47:58,
+Hello',3,14000VND,2024-4-25 13:47:58,
+Total Amount: 62000VND
+
+Invoice Number: 1
+Products:
+Test,9,60000VND,2024-4-25 14:1:9,
+Hello,15000,5VND,2024-4-25 14:1:9,
+Chicken,5,13000VND,2024-4-25 14:1:9,
+Holyshit,1,30000VND,2024-4-25 14:1:9,
+Total Amount: 710000VND
+
+Invoice Number: 2
+Products:
+Test,9,60000VND,2024-4-25 14:42:31,
+Hello,15000,5VND,2024-4-25 14:42:31,
+Chicken,5,13000VND,2024-4-25 14:42:31,
+Holyshit,1,30000VND,2024-4-25 14:42:31,
+Total Amount: 710000VND
+
+Invoice Number: 3
+Products:
+HolyShit,4,35000VND,2024-4-25 14:56:39,
+HelloWorld,9,19000VND,2024-4-25 14:56:39,
+Total Amount: 311000VND
+
