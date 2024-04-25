@@ -20,7 +20,7 @@ public:
     void displayDetails() override;
     double calculateTotalPrice() override;
     bool type() override;
-    double calculateTotalAmount() const override;
+    double calculateTotalAmount(vector<Product*> data) const override;
 };
 
 #endif //TEST_ELECTRONIC_H
