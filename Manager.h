@@ -10,7 +10,7 @@
 class Manager {
 private:
     Supermarket& supermarket;
-    string menuOptions[11] = {
+    string menuOptions[12] = {
             "1.  Add Product",
             "2.  Remove Product",
             "3.  Sort Products by Name",
@@ -21,6 +21,7 @@ private:
             "8.  Save Products to File",
             "9.  Update Product from File",
             "10. Clear Products File",
+            "11. Show Invoice",
             "0.  Exit"
     };
     int menuOptionsSize = sizeof(menuOptions) / sizeof(menuOptions[0]);
@@ -42,8 +43,9 @@ public:
     void calculateTotalRevenue();
     void loadProductsFromFile();
     void saveProductsToFile();
+    void showInvoice();
     static void updateProductFromFile();
-    void clearProductsFile();
+    static void clearProductsFile();
 };
 
 #endif //TEST_MANAGER_H
