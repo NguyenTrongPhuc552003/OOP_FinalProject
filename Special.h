@@ -15,6 +15,7 @@ public:
     // Method
     double applyDiscount(double) const override;
 
+    void saveFile(ofstream&);
     // Getter
     string getType() const override;
 };

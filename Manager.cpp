@@ -7,8 +7,11 @@
 #include "Electronic.h"
 #include "Storage.h"
 
+#include "Normal.h"
+#include "Special.h"
+
 // Constructor for Manager class that takes a reference to a Supermarket object
-Manager::Manager(Supermarket& supermarket) : supermarket(supermarket) {}
+Manager::Manager(Supermarket& supermarket, CustomerManager& customerManager) : supermarket(supermarket), customerManager(customerManager) {}
 
 // Main loop for the program
 void Manager::loop() {
@@ -54,6 +57,9 @@ void Manager::loop() {
                 break;
             case 11:
                 showInvoice();
+                break;
+            case 12:
+                addCustomer();
                 break;
             default:
                 cout << "Invalid choice!\n";
@@ -215,4 +221,63 @@ void Manager::clearProductsFile() {
     } else {
         cout << "Failed to clear products file.\n";
     }
+}
+
+//
+void Manager::addCustomer()
+{
+    int option;
+
+    do {
+        system("cls");
+        cout << "1. Login" << endl;
+        cout << "2. Register" << endl;
+        cout << "0. Return" << endl;
+        cin >> option;
+    } while (option != 1 && option != 2 && option != 0);
+
+    if (option == 1) // login
+    {
+        string name;
+        cout << "Enter name:";
+        cin.ignore();
+        getline(cin, name);
+
+        int loginResult = customerManager.loginCheck(name);
+        if (loginResult == 1)
+            cout << "Login successfully" << endl;
+        else
+            cout << "Failed to login" << endl;
+
+    }
+    else if (option == 2) // sign in
+    {
+        string name;
+        string address;
+        string email;
+        char type;
+
+        cout << "Enter name:";
+        cin.ignore();
+        getline(cin, name);
+        cout << "Enter address:";
+        getline(cin, address);
+        cout << "Enter email:";
+        getline(cin, email);
+        cout << "Enter type(N normal, S special): ";
+        cin >> type;
+
+        Customer* customer = nullptr;
+        if (type == 'N')
+        {
+            customer = new Normal(name, address, email);
+        }
+        else if (type == 'S')
+        {
+            customer = new Special(name, address, email);
+        }
+        customerManager.addCustomer(customer);
+    }
+    else if (option == 0) // return to main menu
+        return;
 }

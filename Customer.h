@@ -20,6 +20,7 @@ public:
 
     virtual double applyDiscount(double) const = 0; // Pure virtual function
     virtual string getType() const = 0; // Pure virtual function
+    virtual void saveFile(ofstream&) = 0;
 
     // Getter
     const string& getName() const;

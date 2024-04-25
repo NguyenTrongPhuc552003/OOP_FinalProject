@@ -9,6 +9,11 @@ double Special::applyDiscount(double totalPrice) const {
     return totalPrice * 0.9;
 }
 
+void Special::saveFile(ofstream& file)
+{
+    file << name << ',' << address << ',' << email << ',' << "Special" << endl;
+}
+
 // Getter
 string Special::getType() const {
     return "Special";

@@ -6,11 +6,14 @@
 #define TEST_MANAGER_H
 
 #include "Supermarket.h"
+#include "CustomerManager.h"
 
 class Manager {
 private:
     Supermarket& supermarket;
-    string menuOptions[12] = {
+    CustomerManager& customerManager;
+
+    string menuOptions[13] = {
             "1.  Add Product",
             "2.  Remove Product",
             "3.  Sort Products by Name",
@@ -22,13 +25,14 @@ private:
             "9.  Update Product from File",
             "10. Clear Products File",
             "11. Show Invoice",
+            "12. Login",
             "0.  Exit"
     };
     int menuOptionsSize = sizeof(menuOptions) / sizeof(menuOptions[0]);
 
 public:
     // Constructor for Manager class that takes a reference to a Supermarket object
-    Manager(Supermarket&);
+    Manager(Supermarket&, CustomerManager&);
 
     // Main methods of Manager class
     void loop();
@@ -46,6 +50,7 @@ public:
     void showInvoice();
     static void updateProductFromFile();
     static void clearProductsFile();
+    void addCustomer();
 };
 
 #endif //TEST_MANAGER_H

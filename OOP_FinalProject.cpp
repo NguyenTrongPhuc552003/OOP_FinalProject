@@ -5,7 +5,8 @@
 
 int main() {
     Supermarket supermarket;
-    Manager manager(supermarket);
+    CustomerManager customerManager;
+    Manager manager(supermarket, customerManager);
     manager.loop();
     return 0;
 }

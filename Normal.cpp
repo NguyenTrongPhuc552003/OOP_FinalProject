@@ -9,6 +9,11 @@ double Normal::applyDiscount(double totalPrice) const {
     return totalPrice;
 }
 
+void Normal::saveFile(ofstream& file)
+{
+    file << name << ',' << address << ',' << email << ',' << "Normal" << endl;
+}
+
 // Getter
 string Normal::getType() const {
     return "Normal";
