@@ -66,10 +66,6 @@ bool Storage::saveProductsToFile(vector<Product*> products) {
         isExist = true;
         loadedProducts.insert(loadedProducts.end(), products.begin(), products.end()); // Append new products to loaded products
     }
-    else {
-        cout << "No products are loaded from file!\n";
-        return false;
-    }
     ofstream outFile(fileName, ios::out); // Open file for writing
     if (!outFile.is_open()) {
         cout << "Error: Unable to open file for writing: " << fileName << endl;
