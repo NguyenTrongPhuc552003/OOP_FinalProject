@@ -233,6 +233,7 @@ void Manager::addCustomer()
         cout << "1. Login" << endl;
         cout << "2. Register" << endl;
         cout << "0. Return" << endl;
+        cout << "Enter your choice:";
         cin >> option;
     } while (option != 1 && option != 2 && option != 0);
 
