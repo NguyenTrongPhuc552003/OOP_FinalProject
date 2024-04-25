@@ -26,9 +26,9 @@ bool Electronic::type() {
 }
 
 // Calculate the total amount of the invoice
-double Electronic::calculateTotalAmount() const {
+double Electronic::calculateTotalAmount(vector<Product*> data) const {
     double total = 0.0;
-    for (const auto& product : products) {
+    for (const auto& product : data) {
         // Electronic items may have additional taxes or warranties
         total += product->getPrice() + product->getTax() + product->getWarrantyCost();
     }

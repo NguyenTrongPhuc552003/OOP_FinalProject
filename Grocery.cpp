@@ -26,9 +26,9 @@ bool Grocery::type() {
 }
 
 // Calculate the total amount of the invoice
-double Grocery::calculateTotalAmount() const {
+double Grocery::calculateTotalAmount(vector<Product*> data) const {
     double total = 0.0;
-    for (const auto& product : products) {
+    for (const auto& product : data) {
         // Grocery items may have discounts or special offers
         total += product->getPrice() * (1 - product->getDiscount()); // Assuming discount is in percentage
     }
