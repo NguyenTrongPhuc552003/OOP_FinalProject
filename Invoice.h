@@ -22,9 +22,11 @@ public:
     void addProduct(Product*);
 
     // Virtual Methods
-    virtual double calculateTotalAmount() const;
-    virtual void displayInvoiceDetails() const;
-    virtual string getCurrentDate() const;
+    virtual double calculateTotalAmount(vector<Product*> data);
+    void displayInvoiceDetails(vector<Product*> data);
+    string getCurrentDate();
+    void readInvoiceFile();
+    string returnSyntaxPrice(string price);
 };
 
 #endif //TEST_INVOICE_H
