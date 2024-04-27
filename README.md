@@ -20,7 +20,7 @@ This is a C++ project for managing a supermarket's inventory, customers, and inv
 2. Compile the project:
 
     ```bash
-    g++ -std=c++11 -Wall -Iinclude src/*.cpp main.cpp -o supermarket_management_system
+    g++ -std=c++11 -Wall -Iinclude *.cpp -o supermarket_management_system
     ```
 
 3. Run the executable:
